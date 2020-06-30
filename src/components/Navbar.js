@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import Link from "react-router-dom/Link";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import withStyles from '@material-ui/core/styles/withStyles';
+import withStyles from "@material-ui/core/styles/withStyles";
 //MUI stuff
 import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/Toolbar";
@@ -10,21 +10,31 @@ import Button from "@material-ui/core/Button";
 
 import { logoutUser } from "../redux/actions/userActions";
 export class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+  }
   handleLogout = () => {
     this.props.logoutUser();
   };
   render() {
-    const {user: {authenticated, handle} } = this.props
+    const {
+      user: {
+        handle,
+        authenticated},
+    } = this.props;
     return (
-
       <AppBar position="fixed">
         <ToolBar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <Button color="inherit">
-                {this.props.user.handle}
-              </Button>
-              <Button color="inherit" onClick={this.handleLogout} component={Link} to="/">
+              <Button color="inherit">{handle}</Button>
+              <Button
+                color="inherit"
+                onClick={this.handleLogout}
+                component={Link}
+                to="/"
+              >
                 Logout
               </Button>
             </Fragment>
@@ -47,14 +57,17 @@ export class Navbar extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-    user: state.user
-})
+  user: state.user,
+});
 const mapActionsToProps = {
-  logoutUser
-}
+  logoutUser,
+};
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
-}
+  user: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles()(Navbar));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles()(Navbar));

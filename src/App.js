@@ -13,6 +13,8 @@ import Navbar from "./components/Navbar";
 import AuthRoute from './util/AuthRoute';
 //Redux elements
 import store from './redux/store';
+import axios from "axios";
+axios.defaults.baseURL = "https://us-central1-super-8-1beb0.cloudfunctions.net/api"
 function App() {
   return (
     <div className="App">
