@@ -22,8 +22,8 @@ function App() {
             <Navbar />
             <Switch>
               <Route exact path="/" component={landing} />
-              <Route exact path="/login" component={login} />
-              <Route exact path="/signup" component={signup} />
+              <AuthRoute exact path="/login" component={login} />
+              <AuthRoute exact path="/signup" component={signup} />
               <Route exact path="/home" component={home} />
             </Switch>
           </div>
