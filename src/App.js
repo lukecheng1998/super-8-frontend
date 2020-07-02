@@ -33,7 +33,7 @@ if (token) {
     window.location.href = "/login";
   } else {
     store.dispatch({ type: SET_AUTHENTICATED });
-    store.defaults.headers.common["Authorization"] = token;
+    //store.defaults.headers.common["Authorization"] = token;
     store.dispatch(getUserData());
   }
 }
