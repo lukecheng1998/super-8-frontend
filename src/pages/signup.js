@@ -57,7 +57,7 @@ export class signup extends Component {
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
-        <Grid>
+        <Grid item sm>
           <Typography variant="h2" className={classes.pageTitle}>
             Sign Up
           </Typography>

@@ -33,9 +33,10 @@ export class Navbar extends Component {
         <ToolBar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <Button color="inherit">{handle}</Button>
+              <Button color="inherit" className={classes.navbarDesign}>{handle}</Button>
               <Button
                 color="inherit"
+                className={classes.navbarDesign}
                 onClick={this.handleLogout}
                 component={Link}
                 to="/"
