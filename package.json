@@ -43,5 +43,8 @@
   "proxy": "https://us-central1-super-8-1beb0.cloudfunctions.net/api",
   "devDependencies": {
     "redux-devtools": "^3.5.0"
-  }
+  },
+  "rnpm": {
+   "assets": ["src/assets/mohave-cufonfonts"]
+ }
 }

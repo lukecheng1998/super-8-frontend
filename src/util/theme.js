@@ -1,16 +1,16 @@
 export default {
     palette: {
         primary: {
-            light: '#33c9dc',
-            main: '#00bcd4',
-            dark: '#008394',
-            contrastText: '#fff'
+            light: '#F2F2F2',
+            main: '#F2F2F2',
+            dark: '#6487A5',
+            contrastText: '#3B566E'
         },
         secondary: {
-            light: '#ff6333',
-            main: '#ff3d00',
-            dark: '#b22a00',
-            contrastText: '#fff'
+            light: '#22B4DE',
+            main: '#ED199',
+            dark: '#6487A5',
+            contrastText: '#3B566E'
         }
     },
     spreadThis: {
@@ -24,14 +24,17 @@ export default {
             margin: '20px auto 20px auto'
         },
         pageTitle: {
-            margin: '10px auto 10px auto'
+            margin: '10px auto 10px auto',
+            color: '#3B566E'
         },
         textField: {
-            margin: '10px auto 10px auto'
+            margin: '10px auto 10px auto',
+            color: '#3B566E'
         },
         button: {
             marginTop: 20,
-            position: 'relative'
+            position: 'relative',
+            color: '#3B566E'
         },
         customError: {
             color: 'red',
@@ -94,6 +97,10 @@ export default {
             '& a': {
                 margin: '20px 10px'
             }
+        },
+        navbarDesign: {
+            fontWeight: 'bold',
+            color: '#3B566E'
         }
     }
 }
