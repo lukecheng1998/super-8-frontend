@@ -25,7 +25,8 @@ export default {
         },
         pageTitle: {
             margin: '10px auto 10px auto',
-            color: '#3B566E'
+            color: '#3B566E',
+            textAlign: 'center'
         },
         textField: {
             margin: '10px auto 10px auto',

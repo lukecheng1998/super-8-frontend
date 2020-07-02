@@ -66,7 +66,7 @@ class login extends Component {
               name="email"
               type="email"
               label="email"
-              className={classes.TextField}
+              className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
               value={this.state.email}
@@ -78,7 +78,7 @@ class login extends Component {
               name="password"
               type="password"
               label="password"
-              className={classes.TextField}
+              className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
               value={this.state.password}

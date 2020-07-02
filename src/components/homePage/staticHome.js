@@ -12,7 +12,7 @@ const staticHome = (props) => {
     } = props
     return (
       <div>
-        <h2>Now Loading...</h2>
+        <h2 className={classes.pageTitle}>Now Loading...</h2>
       </div>
     );
 }

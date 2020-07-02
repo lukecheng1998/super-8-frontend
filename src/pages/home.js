@@ -22,7 +22,7 @@ export class home extends Component {
           Hi {handle}! What would you like to do today
         </Typography>
       ) : (
-        <p>Please sign in to view this page!</p>
+        <p className={classes.pageTitle}>Please sign in to view this page!</p>
       )
     ) : (
       <StaticHome />
@@ -36,4 +36,4 @@ home.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
-export default connect(mapStateToProps)(withStyles()(home));
+export default connect(mapStateToProps)(withStyles(styles)(home));
