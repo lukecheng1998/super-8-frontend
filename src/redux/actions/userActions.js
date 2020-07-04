@@ -26,6 +26,17 @@ export const getUserData = () => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+export const changeSicknessStatus = (userData) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/user", userData)
+    .then((res) => {
+      dispatch({
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
 export const loginUser = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios

@@ -13,7 +13,10 @@ export class home extends Component {
   render() {
     const {
       classes,
-      user: { authenticated, createdAt, handle, loading },
+      user: {
+        authenticated,
+        credentials: { createdAt, handle, loading },
+      },
       // UI: { loading },
     } = this.props;
     return !loading ? (

@@ -12,6 +12,8 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import landing from "./pages/landing";
+import sickness from "./pages/sickness";
+
 //Components
 import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
@@ -50,6 +52,7 @@ function App() {
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
                 <Route exact path="/home" component={home} />
+                <Route exact path ="/sickness" component={sickness} />
               </Switch>
             </div>
           </Router>

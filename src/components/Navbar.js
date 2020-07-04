@@ -11,8 +11,8 @@ import Button from "@material-ui/core/Button";
 import { logoutUser } from "../redux/actions/userActions";
 import theme from "../util/theme";
 const styles = (theme) => ({
-  ...theme.spreadThis
-})
+  ...theme.spreadThis,
+});
 export class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -23,17 +23,22 @@ export class Navbar extends Component {
   };
   render() {
     const {
-      user: {
-        handle,
-        authenticated},
-        classes
+      user: { handle, authenticated },
+      classes,
     } = this.props;
     return (
       <AppBar position="fixed">
         <ToolBar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <Button color="inherit" className={classes.navbarDesign}>{handle}</Button>
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/sickness"
+              >
+                Update
+              </Button>
               <Button
                 color="inherit"
                 className={classes.navbarDesign}
@@ -43,16 +48,39 @@ export class Navbar extends Component {
               >
                 Logout
               </Button>
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/home"
+              >
+                Home
+              </Button>
             </Fragment>
           ) : (
             <Fragment>
-              <Button color="inherit" component={Link} to="/login" className={classes.navbarDesign}>
+              <Button
+                color="inherit"
+                component={Link}
+                to="/login"
+                className={classes.navbarDesign}
+              >
                 Login
               </Button>
-              <Button color="inherit" component={Link} to="/" className={classes.navbarDesign}>
+              <Button
+                color="inherit"
+                component={Link}
+                to="/"
+                className={classes.navbarDesign}
+              >
                 Home
               </Button>
-              <Button color="inherit" component={Link} to="/signup" className={classes.navbarDesign}>
+              <Button
+                color="inherit"
+                component={Link}
+                to="/signup"
+                className={classes.navbarDesign}
+              >
                 Sign Up
               </Button>
             </Fragment>
@@ -71,6 +99,7 @@ const mapActionsToProps = {
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  
 };
 
 export default connect(
