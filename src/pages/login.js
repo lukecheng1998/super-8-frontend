@@ -106,7 +106,7 @@ class login extends Component {
               )}
             </Button>
             <br />
-            <small>
+            <small font="Mohave">
               No account? Sign up <Link to="/signup">here!</Link>
             </small>
           </form>

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { changeSicknessStatus } from "../redux/actions/userActions";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
@@ -12,15 +13,28 @@ class sickness extends Component {
     super();
     this.state = {
       isSick: false,
+      errors: {},
     };
   }
-  handleSubmit = (event) => {
+  handleTrue = (event) => {
     event.preventDefault();
     const userData = {
-      isSick: this.state.isSick,
+      isSick: true,
     };
     this.props.changeSicknessStatus(userData);
   };
+  handleFalse = (event) => {
+    event.preventDefault();
+    const userData = {
+      isSick: false,
+    };
+    this.props.changeSicknessStatus(userData);
+  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -35,13 +49,35 @@ class sickness extends Component {
         credentials: { handle, createdAt, isSick },
       },
     } = this.props;
+    const { errors } = this.state;
     return (
       <div>
-        <p>Are you sick?</p>
-        <Fragment>
-          <Button variant="contained">Yes</Button>
-          <Button variant="contained">No</Button>
-        </Fragment>
+        <Typography variant="h2" className={classes.pageTitle}>
+          Are you sick?
+        </Typography>
+        <Button
+          variant="contained"
+          onChange={this.handleTrue}
+          onSubmit={this.handleChange}
+          value={this.state.isSick}
+          helperText={errors.isSick}
+          error={errors.isSick ? true : false}
+          className={classes.pageTitle}
+        >
+          Yes
+        </Button>
+        <Button
+          variant="contained"
+          onChange={this.handleFalse}
+          onSubmit={this.handleChange}
+          value={this.state.isSick}
+          helperText={errors.isSick}
+          error={errors.isSick ? true : false}
+          className={classes.pageTitle}
+        >
+          No
+        </Button>
+        
       </div>
     );
   }

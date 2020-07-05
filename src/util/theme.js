@@ -26,11 +26,13 @@ export default {
         pageTitle: {
             margin: '10px auto 10px auto',
             color: '#3B566E',
-            textAlign: 'center'
+            textAlign: 'center',
+            font: 'Mohave'
         },
         textField: {
             margin: '10px auto 10px auto',
-            color: '#3B566E'
+            color: '#3B566E',
+            font: 'Mohave'
         },
         button: {
             marginTop: 20,
@@ -101,7 +103,8 @@ export default {
         },
         navbarDesign: {
             fontWeight: 'bold',
-            color: '#3B566E'
+            color: '#3B566E',
+            font: 'Mohave'
         }
     }
 }
