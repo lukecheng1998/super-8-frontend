@@ -22,8 +22,9 @@ export class home extends Component {
     return !loading ? (
       authenticated ? (
         <Typography variant="h2" className={classes.pageTitle}>
-          Hi {handle}! What would you like to do today
+          Hi {handle}! Welcome to the dashboard Let's take a look at your status.
         </Typography>
+        
       ) : (
         <p className={classes.pageTitle}>Please sign in to view this page!</p>
       )

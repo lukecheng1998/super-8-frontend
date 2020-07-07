@@ -6,6 +6,7 @@ import {
   LOADING_UI,
   SET_USER,
   CLEAR_ERRORS,
+  SET_SICKNESS,
 } from "../types";
 import axios from "axios";
 
@@ -26,14 +27,18 @@ export const getUserData = () => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
-export const changeSicknessStatus = (userData) => (dispatch) => {
+export const changeSicknessStatus = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
+  console.log(userData);
   axios
     .post("/user", userData)
     .then((res) => {
+      dispatch({type: CLEAR_ERRORS})
       dispatch({
-        payload: res.data,
+        type: SET_SICKNESS,
+        payload: res.data
       });
+      history.push("/sickness");
     })
     .catch((err) => console.log(err));
 };

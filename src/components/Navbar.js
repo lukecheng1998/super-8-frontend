@@ -37,7 +37,7 @@ export class Navbar extends Component {
                 component={Link}
                 to="/sickness"
               >
-                Update
+                Report Sickness
               </Button>
               <Button
                 color="inherit"
@@ -55,6 +55,14 @@ export class Navbar extends Component {
                 to="/home"
               >
                 Home
+              </Button>
+              <Button
+              color="inherit"
+              className={classes.navbarDesign}
+              component={Link}
+              to="/events"
+              >
+                Events
               </Button>
             </Fragment>
           ) : (
