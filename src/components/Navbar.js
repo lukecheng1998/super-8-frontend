@@ -31,14 +31,7 @@ export class Navbar extends Component {
         <ToolBar className="nav-container">
           {authenticated ? (
             <Fragment>
-              <Button
-                color="inherit"
-                className={classes.navbarDesign}
-                component={Link}
-                to="/sickness"
-              >
-                Report Sickness
-              </Button>
+              
               <Button
                 color="inherit"
                 className={classes.navbarDesign}
@@ -55,14 +48,6 @@ export class Navbar extends Component {
                 to="/home"
               >
                 Home
-              </Button>
-              <Button
-              color="inherit"
-              className={classes.navbarDesign}
-              component={Link}
-              to="/events"
-              >
-                Events
               </Button>
             </Fragment>
           ) : (

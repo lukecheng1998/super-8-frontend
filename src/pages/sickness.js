@@ -92,9 +92,7 @@ export class sickness extends Component {
             disabled={loading}
           >
             Submit
-            {loading && (
-              <CircularProgress size={30} className={classes.progressSpinner} />
-            )}
+            
           </Button>
         </form>
         <form onSubmit={this.handleNotSick}>
@@ -107,11 +105,12 @@ export class sickness extends Component {
             disabled={loading}
           >
             I'm not sick
-            {loading && (
-              <CircularProgress size={30} className={classes.progressSpinner} />
-            )}
+           
           </Button>
         </form>
+        {loading && (
+              <CircularProgress size={30} className={classes.progressSpinner} />
+            )}
       </div>
     ) : (
       <Typography variant="h2" className={classes.pageTitle}>
