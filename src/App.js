@@ -14,6 +14,8 @@ import signup from "./pages/signup";
 import landing from "./pages/landing";
 import sickness from "./pages/sickness";
 import events from "./pages/events";
+import privacy from "./pages/privacy";
+import about from "./pages/about";
 //Components
 import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
@@ -54,6 +56,8 @@ function App() {
                 <Route exact path="/home" component={home} />
                 <Route exact path ="/sickness" component={sickness} />
                 <Route exact path="/events" component={events} />
+                <Route exact path="/privacy" component={privacy} />
+                <Route exact path="/about" component={about} />
               </Switch>
             </div>
           </Router>

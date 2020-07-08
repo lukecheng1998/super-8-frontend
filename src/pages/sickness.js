@@ -9,6 +9,10 @@ import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
 const styles = (theme) => ({
   ...theme.spreadThis,
+  updateMessage: {
+    color: '#3B566E',
+    fontWeight: 'bold'
+  }
 });
 export class sickness extends Component {
   constructor() {
@@ -16,6 +20,8 @@ export class sickness extends Component {
     this.state = {
       isSick: false,
       errors: {},
+      message: "",
+      hasClicked: false
     };
   }
   handleSubmit = (event) => {
@@ -25,6 +31,7 @@ export class sickness extends Component {
     const userData = {
       isSick: true,
     };
+    this.state.hasClicked = true;
     console.log(userData);
     this.props.changeSicknessStatus(userData, this.props.history);
   };
@@ -36,6 +43,7 @@ export class sickness extends Component {
       isSick: false,
     };
     console.log(userData);
+    this.state.hasClicked = true;
     this.props.changeSicknessStatus(userData, this.props.history);
   };
   componentWillReceiveProps(nextProps) {
@@ -46,6 +54,7 @@ export class sickness extends Component {
       this.setState({
         body: "",
         errors: {},
+        message: ""
       });
     }
   }
@@ -64,7 +73,7 @@ export class sickness extends Component {
         credentials: { handle, createdAt, isSick },
       },
     } = this.props;
-    const { errors } = this.state;
+    const { errors, message, hasClicked } = this.state;
     const checkedSick = authenticated ? (
       <div>
         <Typography variant="h2" className={classes.pageTitle}>
@@ -91,7 +100,7 @@ export class sickness extends Component {
             onChange={this.handleChange}
             disabled={loading}
           >
-            Submit
+            I am sick
           </Button>
         </form>
         <form onSubmit={this.handleNotSick}>
@@ -106,6 +115,13 @@ export class sickness extends Component {
             I'm not sick
           </Button>
         </form>
+        { hasClicked && !loading ? (
+          <Typography variant="body1" className={classes.updateMessage}>
+            Successfully updated your sickness status
+          </Typography>
+        ) : (
+          <div />
+        )}
         {loading && (
               <CircularProgress size={30} className={classes.progressSpinner} />
             )}
