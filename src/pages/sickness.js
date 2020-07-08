@@ -92,7 +92,6 @@ export class sickness extends Component {
             disabled={loading}
           >
             Submit
-            
           </Button>
         </form>
         <form onSubmit={this.handleNotSick}>
@@ -105,7 +104,6 @@ export class sickness extends Component {
             disabled={loading}
           >
             I'm not sick
-           
           </Button>
         </form>
         {loading && (

@@ -3,7 +3,8 @@ import { SET_AUTHENTICATED, SET_USER, SET_UNAUTHENTICATED, LOADING_USER, SET_SIC
 const initialState = {
     authenticated: false,
     loading: false,
-    credentials: {}
+    credentials: {},
+    message: ""
 }
 export default function (state = initialState, action){
     switch(action.type){
@@ -28,7 +29,9 @@ export default function (state = initialState, action){
         case SET_SICKNESS:
             return {
                 ...state,
-                isSick: [action.payload, ...state.isSick]
+                //isSick: [action.payload, ...state.isSick],
+                loading: false,
+                message: action.payload
             }
         default:
             return state;

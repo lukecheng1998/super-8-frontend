@@ -29,16 +29,22 @@ export const getUserData = () => (dispatch) => {
 };
 export const changeSicknessStatus = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
+  let retData = {
+    message: "successfully updated your sickness"
+  }
   console.log(userData);
   axios
     .post("/user", userData)
     .then((res) => {
       dispatch({type: CLEAR_ERRORS})
+      dispatch(getUserData()); //get the updated status of user data from database
+      history.push("/sickness");
+    })
+    .then((res) => {
       dispatch({
         type: SET_SICKNESS,
-        payload: res.data
-      });
-      history.push("/sickness");
+        payload: res.data.payload
+      })
     })
     .catch((err) => console.log(err));
 };
