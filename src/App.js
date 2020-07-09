@@ -13,7 +13,9 @@ import login from "./pages/login";
 import signup from "./pages/signup";
 import landing from "./pages/landing";
 import sickness from "./pages/sickness";
-
+import events from "./pages/events";
+import privacy from "./pages/privacy";
+import about from "./pages/about";
 //Components
 import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
@@ -25,20 +27,20 @@ import { getUserData, logoutUser } from "./redux/actions/userActions";
 const theme = createMuiTheme(themeFile);
 axios.defaults.baseURL =
   "https://us-central1-super-8-1beb0.cloudfunctions.net/api";
-const token = localStorage.FBIdToken;
-console.log(token);
-if (token) {
-  const decodedToken = jwtDecode(token);
-  console.log(decodedToken);
-  if (decodedToken.exp * 1000 < Date.now()) {
-    store.dispatch(logoutUser());
-    window.location.href = "/login";
-  } else {
-    store.dispatch({ type: SET_AUTHENTICATED });
-    //store.defaults.headers.common["Authorization"] = token;
-    store.dispatch(getUserData());
-  }
-}
+// const token = localStorage.FBIdToken;
+// console.log(token);
+// if (token) {
+//   const decodedToken = jwtDecode(token);
+//   console.log(decodedToken);
+//   if (decodedToken.exp * 1000 < Date.now()) {
+//     store.dispatch(logoutUser());
+//     window.location.href = "/login";
+//   } else {
+//     store.dispatch({ type: SET_AUTHENTICATED });
+//     store.defaults.headers.common["Authorization"] = token;
+//     store.dispatch(getUserData());
+//   }
+// }
 function App() {
   return (
     <div className="App">
@@ -53,6 +55,9 @@ function App() {
                 <AuthRoute exact path="/signup" component={signup} />
                 <Route exact path="/home" component={home} />
                 <Route exact path ="/sickness" component={sickness} />
+                <Route exact path="/events" component={events} />
+                <Route exact path="/privacy" component={privacy} />
+                <Route exact path="/about" component={about} />
               </Switch>
             </div>
           </Router>

@@ -5,34 +5,57 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { changeSicknessStatus } from "../redux/actions/userActions";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const styles = (theme) => ({
   ...theme.spreadThis,
+  updateMessage: {
+    color: '#3B566E',
+    fontWeight: 'bold'
+  }
 });
-class sickness extends Component {
+export class sickness extends Component {
   constructor() {
     super();
     this.state = {
       isSick: false,
       errors: {},
+      message: "",
+      hasClicked: false
     };
   }
-  handleTrue = (event) => {
+  handleSubmit = (event) => {
+    console.log("in handle submit");
+    console.log(this.state.value);
     event.preventDefault();
     const userData = {
       isSick: true,
     };
-    this.props.changeSicknessStatus(userData);
+    this.state.hasClicked = true;
+    console.log(userData);
+    this.props.changeSicknessStatus(userData, this.props.history);
   };
-  handleFalse = (event) => {
+  handleNotSick = (event) => {
+    console.log("in handle not sick");
+    console.log(this.state.value);
     event.preventDefault();
     const userData = {
       isSick: false,
     };
-    this.props.changeSicknessStatus(userData);
+    console.log(userData);
+    this.state.hasClicked = true;
+    this.props.changeSicknessStatus(userData, this.props.history);
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({
+        body: "",
+        errors: {},
+        message: ""
+      });
     }
   }
   handleChange = (event) => {
@@ -40,6 +63,7 @@ class sickness extends Component {
       [event.target.name]: event.target.value,
     });
   };
+ 
   render() {
     const {
       classes,
@@ -49,37 +73,65 @@ class sickness extends Component {
         credentials: { handle, createdAt, isSick },
       },
     } = this.props;
-    const { errors } = this.state;
-    return (
+    const { errors, message, hasClicked } = this.state;
+    const checkedSick = authenticated ? (
       <div>
         <Typography variant="h2" className={classes.pageTitle}>
           Are you sick?
         </Typography>
-        <Button
-          variant="contained"
-          onChange={this.handleTrue}
-          onSubmit={this.handleChange}
-          value={this.state.isSick}
-          helperText={errors.isSick}
-          error={errors.isSick ? true : false}
-          className={classes.pageTitle}
-        >
-          Yes
-        </Button>
-        <Button
-          variant="contained"
-          onChange={this.handleFalse}
-          onSubmit={this.handleChange}
-          value={this.state.isSick}
-          helperText={errors.isSick}
-          error={errors.isSick ? true : false}
-          className={classes.pageTitle}
-        >
-          No
-        </Button>
-        
+        <TextField
+          name="body"
+          type="text"
+          label="Symptoms"
+          rows="3"
+          placeholder="Write your symptoms here otherwise click I'm not sick if you aren't sick"
+          error={errors.body ? true : false}
+          helperText={errors.body}
+          className={classes.textField}
+          onChange={this.handleChange}
+          fullWidth
+        />
+        <form onSubmit={this.handleSubmit}>
+          <Button
+            id="isSick"
+            type="isSick"
+            variant="contained"
+            color="primary"
+            onChange={this.handleChange}
+            disabled={loading}
+          >
+            I am sick
+          </Button>
+        </form>
+        <form onSubmit={this.handleNotSick}>
+          <Button
+            id="notSick"
+            type="isSick"
+            variant="contained"
+            color="primary"
+            onChange={this.handleChange}
+            disabled={loading}
+          >
+            I'm not sick
+          </Button>
+        </form>
+        { hasClicked && !loading ? (
+          <Typography variant="body1" className={classes.updateMessage}>
+            Successfully updated your sickness status
+          </Typography>
+        ) : (
+          <div />
+        )}
+        {loading && (
+              <CircularProgress size={30} className={classes.progressSpinner} />
+            )}
       </div>
+    ) : (
+      <Typography variant="h2" className={classes.pageTitle}>
+        Please Sign In to view this page
+      </Typography>
     );
+    return checkedSick;
   }
 }
 sickness.propTypes = {
