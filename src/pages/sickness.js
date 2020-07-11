@@ -19,6 +19,7 @@ export class sickness extends Component {
     super();
     this.state = {
       isSick: false,
+      sicknessTime: "",
       errors: {},
       message: "",
       hasClicked: false
@@ -30,6 +31,7 @@ export class sickness extends Component {
     event.preventDefault();
     const userData = {
       isSick: true,
+      sicknessTime: new Date().toISOString()
     };
     this.state.hasClicked = true;
     console.log(userData);
@@ -41,6 +43,7 @@ export class sickness extends Component {
     event.preventDefault();
     const userData = {
       isSick: false,
+      sicknessTime: ""
     };
     console.log(userData);
     this.state.hasClicked = true;
@@ -120,7 +123,9 @@ export class sickness extends Component {
             Successfully updated your sickness status
           </Typography>
         ) : (
-          <div />
+          <Typography variant="body1" className={classes.updateMessage}>
+            There was an error, please try again later
+          </Typography>
         )}
         {loading && (
               <CircularProgress size={30} className={classes.progressSpinner} />

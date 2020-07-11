@@ -14,8 +14,16 @@ var connected = false;
 var selected_device;
 var connected_server;
 export class home extends Component {
-  discoverDevicesOrDisconnect = () => {
+  constructor (){
+    super();
+    this.state = {
+      errors: {},
+      connected: false
+    }
+  }
+  discoverDevicesOrDisconnect = (event) => {
     console.log("discoverDevicesOrDisconnect");
+    
     if (!connected) {
       this.discoverDevices();
     } else {
@@ -73,8 +81,8 @@ export class home extends Component {
   };
   setConnectedStatus = (status) => {
     // We might not need this
-    connected = status;
-    return connected;
+    this.state.connected = status;
+    return this.state.connected;
   };
   resetUI = () => {
     this.setConnectedStatus(false);
@@ -84,10 +92,11 @@ export class home extends Component {
       classes,
       user: {
         authenticated,
-        credentials: { createdAt, handle, loading },
+        credentials: { createdAt, handle },
       },
-      // UI: { loading },
+      UI: { loading },
     } = this.props;
+    const {errors} = this.state
     return !loading ? (
       authenticated ? (
         <html>
@@ -114,7 +123,7 @@ export class home extends Component {
             <Typography variant="h3" className={classes.pageTitle}>
               status
             </Typography>
-            {this.setConnectedStatus() ? (
+            {!this.state.connected ? (
               <Button
                 variant="contained"
                 className={classes.button}
@@ -145,9 +154,11 @@ export class home extends Component {
 }
 const mapStateToProps = (state) => ({
   user: state.user,
+  UI: state.UI
 });
 home.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired
 };
 export default connect(mapStateToProps)(withStyles(styles)(home));
