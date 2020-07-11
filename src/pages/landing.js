@@ -32,37 +32,17 @@ export class landing extends Component {
           >
             Login
           </Button>
-        </div>
-        <div>
+          <div />
           <Button
             variant="contained"
             className={classes.buttons}
             component={Link}
             to="/signup"
           >
-            Sign Up
+            SignUp
           </Button>
         </div>
-        <div>
-          <Button
-            variant="contained"
-            className={classes.buttons}
-            component={Link}
-            to="/privacy"
-          >
-            Privacy
-          </Button>
-        </div>
-        <div>
-          <Button
-            variant="contained"
-            className={classes.buttons}
-            component={Link}
-            to="/about"
-          >
-            About
-          </Button>
-        </div>
+        
       </div>
     );
   }

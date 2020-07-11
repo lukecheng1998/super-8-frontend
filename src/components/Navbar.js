@@ -31,7 +31,6 @@ export class Navbar extends Component {
         <ToolBar className="nav-container">
           {authenticated ? (
             <Fragment>
-              
               <Button
                 color="inherit"
                 className={classes.navbarDesign}
@@ -49,6 +48,14 @@ export class Navbar extends Component {
               >
                 Home
               </Button>
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/other"
+              >
+                Other
+              </Button>
             </Fragment>
           ) : (
             <Fragment>
@@ -59,6 +66,14 @@ export class Navbar extends Component {
                 className={classes.navbarDesign}
               >
                 Home
+              </Button>
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/other"
+              >
+                Other
               </Button>
             </Fragment>
           )}
@@ -76,7 +91,6 @@ const mapActionsToProps = {
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  
 };
 
 export default connect(

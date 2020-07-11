@@ -16,6 +16,7 @@ import sickness from "./pages/sickness";
 import events from "./pages/events";
 import privacy from "./pages/privacy";
 import about from "./pages/about";
+import other from "./pages/other";
 //Components
 import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
@@ -58,6 +59,7 @@ function App() {
                 <Route exact path="/events" component={events} />
                 <Route exact path="/privacy" component={privacy} />
                 <Route exact path="/about" component={about} />
+                <Route exact path="/other" component={other} />
               </Switch>
             </div>
           </Router>
