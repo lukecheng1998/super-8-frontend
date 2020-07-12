@@ -19,6 +19,7 @@ export class sickness extends Component {
     super();
     this.state = {
       isSick: false,
+      sicknessTime: "",
       errors: {},
       message: "",
       hasClicked: false
@@ -30,6 +31,7 @@ export class sickness extends Component {
     event.preventDefault();
     const userData = {
       isSick: true,
+      sicknessTime: new Date().toISOString()
     };
     this.state.hasClicked = true;
     console.log(userData);
@@ -41,6 +43,7 @@ export class sickness extends Component {
     event.preventDefault();
     const userData = {
       isSick: false,
+      sicknessTime: ""
     };
     console.log(userData);
     this.state.hasClicked = true;
@@ -112,7 +115,7 @@ export class sickness extends Component {
             onChange={this.handleChange}
             disabled={loading}
           >
-            I'm not sick
+            Cancel
           </Button>
         </form>
         { hasClicked && !loading ? (
