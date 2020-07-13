@@ -87,7 +87,7 @@ export class sickness extends Component {
           type="text"
           label="Symptoms"
           rows="3"
-          placeholder="Write your symptoms here otherwise click I'm not sick if you aren't sick"
+          placeholder="Write your symptoms here otherwise click cancel if you aren't sick"
           error={errors.body ? true : false}
           helperText={errors.body}
           className={classes.textField}
@@ -123,6 +123,8 @@ export class sickness extends Component {
             Successfully updated your sickness status
           </Typography>
         ) : (
+          <Typography variant="body1" className={classes.updateMessage}>
+          </Typography>
           <div />
         )}
         {loading && (
