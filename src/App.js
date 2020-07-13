@@ -17,6 +17,7 @@ import events from "./pages/events";
 import privacy from "./pages/privacy";
 import about from "./pages/about";
 import activation from "./pages/activation";
+import other from "./pages/other";
 //Components
 import Navbar from "./components/Navbar";
 import AuthRoute from "./util/AuthRoute";
@@ -60,6 +61,7 @@ function App() {
                 <Route exact path="/privacy" component={privacy} />
                 <Route exact path="/about" component={about} />
                 <Route exact path="/activation" component={activation} />
+                <Route exact path="/other" component={other} />
               </Switch>
             </div>
           </Router>

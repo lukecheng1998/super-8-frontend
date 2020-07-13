@@ -115,7 +115,7 @@ export class sickness extends Component {
             onChange={this.handleChange}
             disabled={loading}
           >
-            I'm not sick
+            Cancel
           </Button>
         </form>
         { hasClicked && !loading ? (
@@ -124,8 +124,8 @@ export class sickness extends Component {
           </Typography>
         ) : (
           <Typography variant="body1" className={classes.updateMessage}>
-           
           </Typography>
+          <div />
         )}
         {loading && (
               <CircularProgress size={30} className={classes.progressSpinner} />

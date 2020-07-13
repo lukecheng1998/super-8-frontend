@@ -38,7 +38,12 @@ export const changeSicknessStatus = (userData, history) => (dispatch) => {
     .then((res) => {
       dispatch({type: CLEAR_ERRORS})
       dispatch(getUserData()); //get the updated status of user data from database
-      history.push("/sickness");
+      if(userData.isSick){
+        history.push("/sickness");
+      }else{
+        history.push("/home");
+      }
+     
     })
     .then((res) => {
       dispatch({
