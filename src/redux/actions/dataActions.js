@@ -1,4 +1,4 @@
-import {GET_BLUETOOTH_DEVICES, POST_BLUETOOTH_DEVICES, LOADING_DATA, LOADING_UI, SET_ERRORS, CLEAR_ERRORS} from '../types'
+import {GET_BLUETOOTH_DEVICES, POST_BLUETOOTH_DEVICES, LOADING_DATA, LOADING_UI, SET_ERRORS, CLEAR_ERRORS, LOADING_USER} from '../types'
 import axios from 'axios';
 var connected = false;
 var selected_device;
@@ -22,9 +22,11 @@ const discoverDevices = () => (dispatch) => {
     navigator.bluetooth.requestDevice(options)
     .then(device => {
         DeviceData = {
-            id: device.id
+            id: device.id,
+            time: new Date().toISOString()
         }
         console.log(DeviceData);
+        //axios.post(`/users/${}/devices`, DeviceData);
         dispatch({
             type: GET_BLUETOOTH_DEVICES,
             payload: DeviceData
