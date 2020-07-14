@@ -11,10 +11,12 @@ const reducers = combineReducers({
   UI: uiReducer,
   data: dataReducer
 });
-const composeEnhancers =
-  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-    : compose;
-const enhancer = composeEnhancers(applyMiddleware(...middleware));
-const store = createStore(reducers, initialState, enhancer);
+// const composeEnhancers =
+//   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+//     : compose;
+// const enhancer = composeEnhancers(applyMiddleware(...middleware));
+// const store = createStore(reducers, initialState, enhancer);
+const store = createStore(reducers, initialState, compose(applyMiddleware(...middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+));
 export default store;

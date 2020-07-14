@@ -45,6 +45,8 @@
     "redux-devtools": "^3.5.0"
   },
   "rnpm": {
-   "assets": ["src/assets/mohave-cufonfonts"]
- }
+    "assets": [
+      "src/assets/mohave-cufonfonts"
+    ]
+  }
 }

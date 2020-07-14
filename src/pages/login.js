@@ -18,9 +18,9 @@ import { withStyles, Box } from "@material-ui/core";
 const styles = (theme) => ({
   ...theme.spreadThis,
   textfield_text: {
-    color: '#3B566E',
-    fontWeight: 'bold'
-  }
+    color: "#3B566E",
+    fontWeight: "bold",
+  },
 });
 
 class login extends Component {
@@ -65,45 +65,54 @@ class login extends Component {
             LogIn
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
-            <Box color='#F2F2F2' clone>
-            <TextField
-              id="email"
-              name="email"
-              type="email"
-              label="email"
-              className={classes.textField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
-              value={this.state.email}
-              onChange={this.handleChange}
-              fullWidth
-              color={classes.textfield_text}
-            />
-            </Box>
-            <TextField
-              id="password"
-              name="password"
-              type="password"
-              label="password"
-              className={classes.textField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
-              value={this.state.password}
-              onChange={this.handleChange}
-              fullWidth
-              color={classes.textfield_text}
-            />
+            
+              <Box bgcolor="primary" color="primary.contrastText" border={5}>
+                <TextField
+                  id="email"
+                  name="email"
+                  type="email"
+                  label="email"
+                  className={classes.textField}
+                  helperText={errors.email}
+                  error={errors.email ? true : false}
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  fullWidth
+                  bgcolor="primary"
+                  color="primary.contrastText"
+                />
+              </Box>
+            <br />
+              <Box bgcolor="primary" color="primary.contrastText" border={5}>
+                <TextField
+                  id="password"
+                  name="password"
+                  type="password"
+                  label="password"
+                  className={classes.textField}
+                  helperText={errors.password}
+                  error={errors.password ? true : false}
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  fullWidth
+                  bgcolor="primary"
+                  color="primary.contrastText"
+                />
+              </Box>
+          
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
               </Typography>
             )}
+            <div align="center">
+            <Box width="25%" height="5%">
             <Button
               type="submit"
               variant="contained"
-              color="primary"
-              className={classes.button}
+              className={classes.buttons}
               disabled={loading}
+              fullWidth
             >
               login
               {loading && (
@@ -113,6 +122,8 @@ class login extends Component {
                 />
               )}
             </Button>
+            </Box>
+            </div>
             <br />
             <small font="Mohave">
               No account? Sign up <Link to="/signup">here!</Link>
