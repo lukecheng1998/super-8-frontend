@@ -26,6 +26,7 @@ import store from "./redux/store";
 import axios from "axios";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { getUserData, logoutUser } from "./redux/actions/userActions";
+import { CssBaseline } from "@material-ui/core";
 const theme = createMuiTheme(themeFile);
 axios.defaults.baseURL =
   "https://us-central1-super-8-1beb0.cloudfunctions.net/api";
@@ -47,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
+        <CssBaseline />
         <Provider store={store}>
           <Router>
             <div className="container">
@@ -66,6 +68,7 @@ function App() {
             </div>
           </Router>
         </Provider>
+       
       </MuiThemeProvider>
     </div>
   );

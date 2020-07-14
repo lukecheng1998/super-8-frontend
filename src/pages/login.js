@@ -12,11 +12,15 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { withStyles } from "@material-ui/core";
+import { withStyles, Box } from "@material-ui/core";
 
 //import a theme later on
 const styles = (theme) => ({
   ...theme.spreadThis,
+  textfield_text: {
+    color: '#3B566E',
+    fontWeight: 'bold'
+  }
 });
 
 class login extends Component {
@@ -61,6 +65,7 @@ class login extends Component {
             LogIn
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
+            <Box color='#F2F2F2' clone>
             <TextField
               id="email"
               name="email"
@@ -72,7 +77,9 @@ class login extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
+              color={classes.textfield_text}
             />
+            </Box>
             <TextField
               id="password"
               name="password"
@@ -84,6 +91,7 @@ class login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth
+              color={classes.textfield_text}
             />
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>

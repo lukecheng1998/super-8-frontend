@@ -54,12 +54,6 @@ export class home extends Component {
                 Report Sickness
               </Button>
             </div>
-            <Typography variant="h3" className={classes.pageTitle}>
-              Web bluetooth
-            </Typography>
-            <Typography variant="h3" className={classes.pageTitle}>
-              status
-            </Typography>
             <Button variant="contained" component={Link} to="/activation">
               Activation
             </Button>

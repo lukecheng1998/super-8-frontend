@@ -1,3 +1,6 @@
+import MohaveBold from '../assets/mohave-cufonfonts/Mohave-Bold.ttf'
+import MohaveLight from '../assets/mohave-cufonfonts/Mohave-Light.ttf'
+
 export default {
     palette: {
         primary: {
@@ -15,7 +18,7 @@ export default {
     },
     spreadThis: {
         typography: {
-            useNextVariants: true
+            useNextVariants: true,
         },
         form: {
             textAlign: 'center'
