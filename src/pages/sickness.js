@@ -125,7 +125,7 @@ export class sickness extends Component {
         ) : (
           <Typography variant="body1" className={classes.updateMessage}>
           </Typography>
-          <div />
+          
         )}
         {loading && (
               <CircularProgress size={30} className={classes.progressSpinner} />
