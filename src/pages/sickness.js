@@ -7,12 +7,13 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Box from "@material-ui/core/Box";
 const styles = (theme) => ({
   ...theme.spreadThis,
   updateMessage: {
-    color: '#3B566E',
-    fontWeight: 'bold'
-  }
+    color: "#3B566E",
+    fontWeight: "bold",
+  },
 });
 export class sickness extends Component {
   constructor() {
@@ -22,7 +23,7 @@ export class sickness extends Component {
       sicknessTime: "",
       errors: {},
       message: "",
-      hasClicked: false
+      hasClicked: false,
     };
   }
   handleSubmit = (event) => {
@@ -31,7 +32,7 @@ export class sickness extends Component {
     event.preventDefault();
     const userData = {
       isSick: true,
-      sicknessTime: new Date().toISOString()
+      sicknessTime: new Date().toISOString(),
     };
     this.state.hasClicked = true;
     console.log(userData);
@@ -43,7 +44,7 @@ export class sickness extends Component {
     event.preventDefault();
     const userData = {
       isSick: false,
-      sicknessTime: ""
+      sicknessTime: "",
     };
     console.log(userData);
     this.state.hasClicked = true;
@@ -57,7 +58,7 @@ export class sickness extends Component {
       this.setState({
         body: "",
         errors: {},
-        message: ""
+        message: "",
       });
     }
   }
@@ -66,7 +67,7 @@ export class sickness extends Component {
       [event.target.name]: event.target.value,
     });
   };
- 
+
   render() {
     const {
       classes,
@@ -95,41 +96,52 @@ export class sickness extends Component {
           fullWidth
         />
         <form onSubmit={this.handleSubmit}>
-          <Button
-            id="isSick"
-            type="isSick"
-            variant="contained"
-            color="primary"
-            onChange={this.handleChange}
-            disabled={loading}
-          >
-            I am sick
-          </Button>
+          <div align="center">
+            <Box width="25%" height="5%">
+              <Button
+                id="isSick"
+                type="isSick"
+                variant="contained"
+                className={classes.buttons}
+                onChange={this.handleChange}
+                disabled={loading}
+                fullWidth
+              >
+                I am sick
+              </Button>
+            </Box>
+          </div>
         </form>
         <form onSubmit={this.handleNotSick}>
-          <Button
-            id="notSick"
-            type="isSick"
-            variant="contained"
-            color="primary"
-            onChange={this.handleChange}
-            disabled={loading}
-          >
-            Cancel
-          </Button>
+          <div align="center">
+            <Box width="25%" height="5%">
+              <Button
+                id="notSick"
+                type="isSick"
+                variant="contained"
+                className={classes.buttons}
+                onChange={this.handleChange}
+                disabled={loading}
+                fullWidth
+              >
+                Cancel
+              </Button>
+            </Box>
+          </div>
         </form>
-        { hasClicked && !loading ? (
+        {hasClicked && !loading ? (
           <Typography variant="body1" className={classes.updateMessage}>
             Successfully updated your sickness status
           </Typography>
         ) : (
-          <Typography variant="body1" className={classes.updateMessage}>
-          </Typography>
-          
+          <Typography
+            variant="body1"
+            className={classes.updateMessage}
+          ></Typography>
         )}
         {loading && (
-              <CircularProgress size={30} className={classes.progressSpinner} />
-            )}
+          <CircularProgress size={30} className={classes.progressSpinner} />
+        )}
       </div>
     ) : (
       <Typography variant="h2" className={classes.pageTitle}>

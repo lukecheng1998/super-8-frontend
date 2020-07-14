@@ -70,6 +70,18 @@ export class landing extends Component {
               About
             </Button>
           </Box>
+          <div />
+          <Box width="25%" height="5%">
+            <Button
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/acknowledgments"
+              fullWidth
+            >
+              Acknowledgements
+            </Button>
+          </Box>
         </div>
       </div>
     );
