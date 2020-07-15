@@ -5,12 +5,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import withStyles from "@material-ui/core/styles/withStyles";
 import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-  KeyboardTimePicker,
-} from "@material-ui/pickers";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -20,7 +14,11 @@ export class events extends Component {
     super();
     this.state = {
       errors: {},
-      hasClick: false
+      hasClick: false,
+      event: "",
+      date: "",
+      venue: ""
+
     };
   }
   handleSubmit = (event) => {

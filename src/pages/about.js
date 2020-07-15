@@ -72,6 +72,17 @@ export class About extends Component {
           notified, decreasing overall event liability, easing tourism
           apprehension, therefore returning safety to Indianapolis events.
         </Typography>
+        <Typography variant="h3" className={classes.pageTitle}>
+          Why bluetooth?
+        </Typography>
+        <Typography variant="body1" className={classes.pageTitle}>
+          Our application and website rely on Bluetooth technology, which the
+          majority of modern devices have the capability to support. We can
+          track user interactions because Bluetooth’s short-range can transmit a
+          “bubble” around each user which will work more effectively for a
+          variety of event spaces, allowing for more accurate COVID-19 exposure
+          data.
+        </Typography>
       </div>
     );
   }
