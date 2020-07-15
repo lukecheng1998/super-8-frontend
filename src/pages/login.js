@@ -65,64 +65,63 @@ class login extends Component {
             LogIn
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
-            
-              <Box bgcolor="primary" color="primary.contrastText" border={5}>
-                <TextField
-                  id="email"
-                  name="email"
-                  type="email"
-                  label="email"
-                  className={classes.textField}
-                  helperText={errors.email}
-                  error={errors.email ? true : false}
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                  fullWidth
-                  bgcolor="primary"
-                  color="primary.contrastText"
-                />
-              </Box>
+            <Box bgcolor="primary" color="primary.contrastText" border={5}>
+              <TextField
+                id="email"
+                name="email"
+                type="email"
+                label="email"
+                className={classes.textField}
+                helperText={errors.email}
+                error={errors.email ? true : false}
+                value={this.state.email}
+                onChange={this.handleChange}
+                fullWidth
+                bgcolor="primary"
+                color="primary.contrastText"
+              />
+            </Box>
             <br />
-              <Box bgcolor="primary" color="primary.contrastText" border={5}>
-                <TextField
-                  id="password"
-                  name="password"
-                  type="password"
-                  label="password"
-                  className={classes.textField}
-                  helperText={errors.password}
-                  error={errors.password ? true : false}
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                  fullWidth
-                  bgcolor="primary"
-                  color="primary.contrastText"
-                />
-              </Box>
-          
+            <Box bgcolor="primary" color="primary.contrastText" border={5}>
+              <TextField
+                id="password"
+                name="password"
+                type="password"
+                label="password"
+                className={classes.textField}
+                helperText={errors.password}
+                error={errors.password ? true : false}
+                value={this.state.password}
+                onChange={this.handleChange}
+                fullWidth
+                bgcolor="primary"
+                color="primary.contrastText"
+              />
+            </Box>
+
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
               </Typography>
             )}
             <div align="center">
-            <Box width="25%" height="5%">
-            <Button
-              type="submit"
-              variant="contained"
-              className={classes.buttons}
-              disabled={loading}
-              fullWidth
-            >
-              login
-              {loading && (
-                <CircularProgress
-                  size={30}
-                  className={classes.CircularProgress}
-                />
-              )}
-            </Button>
-            </Box>
+              <Box width="25%" height="5%">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  className={classes.buttons}
+                  disabled={loading}
+                  fullWidth
+                >
+                  login
+                  {loading && (
+                    <CircularProgress
+                      size={30}
+                      className={classes.CircularProgress}
+                    />
+                  )}
+                </Button>
+              </Box>
             </div>
             <br />
             <small font="Mohave">

@@ -19,6 +19,7 @@ export class activation extends Component {
       open: false,
       errors: {},
       connected: false,
+      hasClicked: false
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -64,6 +65,7 @@ export class activation extends Component {
       connected: this.state.connected,
     };
     this.props.discoverDevicesOrDisconnect(data, this.props.history);
+    this.state.hasClicked = true;
   };
 
   render() {
@@ -79,6 +81,9 @@ export class activation extends Component {
       <Fragment>
         <form onSubmit={this.handleSubmit}>
           <div align="center">
+            <Typography variant="h3" className={classes.pageTitle}>
+              Activate Bluetooth
+            </Typography>
             <Box width="25%" height="5%">
               <Button
                 type="submit"
@@ -92,7 +97,13 @@ export class activation extends Component {
             </Box>
           </div>
         </form>
-
+        {this.state.hasClicked ? (
+          <Typography variant="body1" className={classes.pageTitle}>
+            Sucessfully activated device 
+          </Typography>
+        ):(
+          <div />
+        )}
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
