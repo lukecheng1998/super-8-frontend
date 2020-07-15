@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core";
+import { withStyles, CssBaseline, Box } from "@material-ui/core";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
@@ -14,35 +14,75 @@ export class landing extends Component {
     const { classes, loading } = this.props;
     return (
       <div>
-        <Typography variant="h1" className={classes.navbarDesign}>
+        <CssBaseline />
+        <Typography
+          variant="h1"
+          className={classes.navbarDesign}
+          align="center"
+        >
           Super 8 Tracking for COVID-19
         </Typography>
-        <Typography variant="h2" className={classes.pageTitle}>
-          The Problem - insert problem here
-        </Typography>
-        <Typography variant="h2" className={classes.pageTitle}>
-          Our Solution - insert solution here
-        </Typography>
-        <div>
-          <Button
-            variant="contained"
-            className={classes.buttons}
-            component={Link}
-            to="/login"
-          >
-            Login
-          </Button>
+        <div align="center">
+          <Box width="25%" height="5%">
+            <Button
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/login"
+              fullWidth
+            >
+              Login
+            </Button>
+          </Box>
           <div />
-          <Button
-            variant="contained"
-            className={classes.buttons}
-            component={Link}
-            to="/signup"
-          >
-            SignUp
-          </Button>
+          <Box width="25%">
+            <Button
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/signup"
+              fullWidth
+            >
+              SignUp
+            </Button>
+          </Box>
+          <div />
+          <Box width="25%">
+            <Button
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/privacy"
+              fullWidth
+            >
+              Privacy
+            </Button>
+          </Box>
+          <div />
+          <Box width="25%" height="5%">
+            <Button
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/about"
+              fullWidth
+            >
+              About
+            </Button>
+          </Box>
+          <div />
+          <Box width="25%" height="5%">
+            <Button
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/acknowledgments"
+              fullWidth
+            >
+              Acknowledgements
+            </Button>
+          </Box>
         </div>
-        
       </div>
     );
   }

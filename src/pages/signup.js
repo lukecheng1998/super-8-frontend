@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import Box from '@material-ui/core/Box'
 //Redux stuff
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
@@ -62,54 +62,65 @@ export class signup extends Component {
             Sign Up
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
-            <TextField
-              id="email"
-              name="email"
-              type="email"
-              label="email"
-              className={classes.TextField}
-              helperText={errors.email}
-              error={errors.email ? true : false}
-              value={this.state.email}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="password"
-              name="password"
-              type="password"
-              label="password"
-              className={classes.TextField}
-              helperText={errors.password}
-              error={errors.password ? true : false}
-              value={this.state.password}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              label="confirm password"
-              className={classes.TextField}
-              helperText={errors.confirmPassword}
-              error={errors.confirmPassword ? true : false}
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
-              fullWidth
-            />
-            <TextField
-              id="handle"
-              name="handle"
-              type="text"
-              label="name"
-              className={classes.TextField}
-              helperText={classes.handle}
-              error={errors.handle ? true : false}
-              value={this.state.handle}
-              onChange={this.handleChange}
-              fullWidth
-            />
+            <Box bgcolor="primary" color="primary.contrastText" border={5}>
+              <TextField
+                id="email"
+                name="email"
+                type="email"
+                label="email"
+                className={classes.TextField}
+                helperText={errors.email}
+                error={errors.email ? true : false}
+                value={this.state.email}
+                onChange={this.handleChange}
+                fullWidth
+              />
+            </Box>
+            <br />
+            <Box bgcolor="primary" color="primary.contrastText" border={5}>
+              <TextField
+                id="password"
+                name="password"
+                type="password"
+                label="password"
+                className={classes.TextField}
+                helperText={errors.password}
+                error={errors.password ? true : false}
+                value={this.state.password}
+                onChange={this.handleChange}
+                fullWidth
+              />
+            </Box>
+            <br />
+            <Box bgcolor="primary" color="primary.contrastText" border={5}>
+              <TextField
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                label="confirm password"
+                className={classes.TextField}
+                helperText={errors.confirmPassword}
+                error={errors.confirmPassword ? true : false}
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+                fullWidth
+              />
+            </Box>
+            <br />
+            <Box bgcolor="primary" color="primary.contrastText" border={5}>
+              <TextField
+                id="handle"
+                name="handle"
+                type="text"
+                label="name"
+                className={classes.TextField}
+                helperText={classes.handle}
+                error={errors.handle ? true : false}
+                value={this.state.handle}
+                onChange={this.handleChange}
+                fullWidth
+              />
+            </Box>
             {errors.general && (
               <Typography variant="body2" className={classes.customError}>
                 {errors.general}
@@ -118,11 +129,11 @@ export class signup extends Component {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
-              className={classes.button}
+              className={classes.buttons}
               disabled={loading}
+              fullWidth
             >
-              submit
+              Submit
             </Button>
             <br />
             <small>

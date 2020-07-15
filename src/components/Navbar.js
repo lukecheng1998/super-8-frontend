@@ -56,6 +56,9 @@ export class Navbar extends Component {
               >
                 Other
               </Button>
+              <div align="center">
+                <img src="logo-2.png" alt="logo" height="50" width="50" display="block" margin-left="auto" margin-right="auto"/>
+              </div>
             </Fragment>
           ) : (
             <Fragment>
@@ -67,14 +70,9 @@ export class Navbar extends Component {
               >
                 Home
               </Button>
-              <Button
-                color="inherit"
-                className={classes.navbarDesign}
-                component={Link}
-                to="/other"
-              >
-                Other
-              </Button>
+              <div align="center">
+                <img src="logo-2.png" alt="logo" height="50" width="50" display="block" margin-left="auto" margin-right="auto"/>
+              </div>
             </Fragment>
           )}
         </ToolBar>

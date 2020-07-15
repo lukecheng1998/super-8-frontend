@@ -6,20 +6,21 @@ import {
 } from "../redux/actions/dataActions";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import { Button, Dialog } from "@material-ui/core";
+import { Button, Dialog, Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import {Link} from "@material-ui/core/Link";
+import { Link } from "@material-ui/core/Link";
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
 export class activation extends Component {
   constructor() {
-      super();
-      this.state = {
-        open: false,
-        errors: {},
-        connected: false,
-      };
+    super();
+    this.state = {
+      open: false,
+      errors: {},
+      connected: false,
+      hasClicked: false
+    };
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
@@ -52,8 +53,8 @@ export class activation extends Component {
     });
   };
   handleSubmit = (event) => {
-      console.log("in handle submit");
-      
+    console.log("in handle submit");
+
     event.preventDefault();
     if (this.state.connected === false) {
       this.state.connected = true;
@@ -61,9 +62,10 @@ export class activation extends Component {
       this.state.connected = false;
     }
     const data = {
-        connected: this.state.connected
-    }
+      connected: this.state.connected,
+    };
     this.props.discoverDevicesOrDisconnect(data, this.props.history);
+    this.state.hasClicked = true;
   };
 
   render() {
@@ -72,23 +74,36 @@ export class activation extends Component {
       classes,
       user: {
         authenticated,
-        credentials: { deviceID }
+        credentials: { deviceID },
       },
     } = this.props;
     return authenticated ? (
       <Fragment>
         <form onSubmit={this.handleSubmit}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              tip="Activate"
-            >
-              Activate
-            </Button>
-         
+          <div align="center">
+            <Typography variant="h3" className={classes.pageTitle}>
+              Activate Bluetooth
+            </Typography>
+            <Box width="25%" height="5%">
+              <Button
+                type="submit"
+                variant="contained"
+                className={classes.buttons}
+                tip="Activate"
+                fullWidth
+              >
+                Activate
+              </Button>
+            </Box>
+          </div>
         </form>
-
+        {this.state.hasClicked ? (
+          <Typography variant="body1" className={classes.pageTitle}>
+            Sucessfully activated device 
+          </Typography>
+        ):(
+          <div />
+        )}
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -105,12 +120,13 @@ activation.propTypes = {
   discoverDevicesOrDisconnect: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,
   clearErrors: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   UI: state.UI,
-  user: state.user
+  user: state.user,
 });
-export default connect(mapStateToProps, { discoverDevicesOrDisconnect, clearErrors })(
-  withStyles(styles)(activation)
-);
+export default connect(mapStateToProps, {
+  discoverDevicesOrDisconnect,
+  clearErrors,
+})(withStyles(styles)(activation));

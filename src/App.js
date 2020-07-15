@@ -26,33 +26,36 @@ import store from "./redux/store";
 import axios from "axios";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { getUserData, logoutUser } from "./redux/actions/userActions";
+import { CssBaseline } from "@material-ui/core";
+import acknowledgments from "./pages/acknowledgments";
 const theme = createMuiTheme(themeFile);
 axios.defaults.baseURL =
   "https://us-central1-super-8-1beb0.cloudfunctions.net/api";
-// const token = localStorage.FBIdToken;
-// console.log(token);
-// if (token) {
-//   const decodedToken = jwtDecode(token);
-//   console.log(decodedToken);
-//   if (decodedToken.exp * 1000 < Date.now()) {
-//     store.dispatch(logoutUser());
-//     window.location.href = "/login";
-//   } else {
-//     store.dispatch({ type: SET_AUTHENTICATED });
-//     store.defaults.headers.common["Authorization"] = token;
-//     store.dispatch(getUserData());
-//   }
-// }
+const token = localStorage.FBIdToken;
+console.log(token);
+if (token) {
+  const decodedToken = jwtDecode(token);
+  console.log(decodedToken);
+  if (decodedToken.exp * 1000 < Date.now()) {
+    store.dispatch(logoutUser());
+    window.location.href = "/login";
+  } else {
+    store.dispatch({ type: SET_AUTHENTICATED });
+    axios.defaults.headers.common["Authorization"] = token;
+    store.dispatch(getUserData());
+  }
+}
 function App() {
   return (
     <div className="App">
       <MuiThemeProvider theme={theme}>
+        <CssBaseline />
         <Provider store={store}>
           <Router>
             <div className="container">
               <Navbar />
               <Switch>
-                <Route exact path="/" component={landing} />
+                <AuthRoute exact path="/" component={landing} />
                 <AuthRoute exact path="/login" component={login} />
                 <AuthRoute exact path="/signup" component={signup} />
                 <Route exact path="/home" component={home} />
@@ -62,10 +65,12 @@ function App() {
                 <Route exact path="/about" component={about} />
                 <Route exact path="/activation" component={activation} />
                 <Route exact path="/other" component={other} />
+                <Route exact path="/acknowledgments" component={acknowledgments} />
               </Switch>
             </div>
           </Router>
         </Provider>
+       
       </MuiThemeProvider>
     </div>
   );
