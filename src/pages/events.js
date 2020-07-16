@@ -4,7 +4,10 @@ import TextField from "@material-ui/core/TextField";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { postEvents } from "../redux/actions/dataActions";
 import "date-fns";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -17,28 +20,35 @@ export class events extends Component {
       hasClick: false,
       event: "",
       date: "",
-      venue: ""
-
+      venue: "",
     };
   }
   handleSubmit = (event) => {
     event.preventDefault();
+    var d = new Date(this.state.date);
+    console.log(d);
+    const postEvent = {
+      event: this.state.event,
+      date: d.toISOString(),
+      venue: this.state.venue,
+    };
+    this.props.postEvents(postEvent, this.props.history);
+    this.state.hasClick = true;
   };
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
- 
+
   render() {
     const {
       classes,
       user: {
         authenticated,
-        credentials: { handle, createdAt, isSick, loading },
       },
     } = this.props;
-    const { errors } = this.state;
+    const { errors, hasClick, loading } = this.state;
 
     return (
       <div>
@@ -57,14 +67,16 @@ export class events extends Component {
                     border={3}
                   >
                     <TextField
-                      name="body"
-                      type="text"
+                      id="event"
+                      name="event"
+                      type="event"
                       label="Event"
                       placeholder="Event Name"
-                      error={errors.body ? true : false}
-                      helperText={errors.body}
+                      error={errors.event ? true : false}
+                      helperText={errors.event}
                       className={classes.textField}
                       onChange={this.handleChange}
+                      value={this.state.event}
                       fullWidth
                     />
                   </Box>
@@ -75,14 +87,15 @@ export class events extends Component {
                     border={3}
                   >
                     <TextField
-                      name="body"
-                      type="text"
+                      id="date"
+                      name="date"
+                      type="date"
                       label="Date First Attended"
-                      placeholder="Please enter the date in MM/DD/YYYY"
-                      error={errors.body ? true : false}
-                      helperText={errors.body}
+                      error={errors.date ? true : false}
+                      helperText={errors.date}
                       className={classes.textField}
                       onChange={this.handleChange}
+                      value={this.state.date}
                       fullWidth
                     />
                   </Box>
@@ -93,24 +106,27 @@ export class events extends Component {
                     border={3}
                   >
                     <TextField
-                      name="body"
-                      type="text"
+                      id="venue"
+                      name="venue"
+                      type="venue"
                       label="Venue Location"
                       placeholder="Please enter the location of the Venue"
-                      error={errors.body ? true : false}
-                      helperText={errors.body}
+                      error={errors.venue ? true : false}
+                      helperText={errors.venue}
                       className={classes.textField}
                       onChange={this.handleChange}
+                      value={this.state.venue}
                       fullWidth
                     />
                   </Box>
                   <div align="center">
                     <Box width="25%" height="5%">
                       <Button
+                        id="submit"
                         type="submit"
                         variant="contained"
                         className={classes.buttons}
-                        tip="Activate"
+                        onChange={this.handleChange}
                         fullWidth
                         disabled={loading}
                       >
@@ -122,6 +138,16 @@ export class events extends Component {
               </Grid>
               <Grid item sm />
             </Grid>
+            {hasClick && !loading ? (
+              <Typography variant="body1" className={classes.pageTitle}>
+                Successfully add your event, feel free to add more or click home to navigate home
+              </Typography>
+            ) : (
+              <div />
+            )}
+            {loading && (
+              <CircularProgress size={30} className={classes.progressSpinner} />
+            )}
           </div>
         ) : (
           <Typography variant="body1">
@@ -136,9 +162,14 @@ events.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired,
+  postEvents: PropTypes.func.isRequired,
 };
+const mapActionsToProps = { postEvents };
 const mapStateToProps = (state) => ({
   user: state.user,
   UI: state.UI,
 });
-export default connect(mapStateToProps)(withStyles(styles)(events));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(events));

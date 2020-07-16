@@ -12,4 +12,4 @@ export const LOADING_DATA = 'LOADING_DATA';
 export const STOP_LOADING_UI = 'STOP_LOADING_UI';
 //More might be needed later
 export const GET_BLUETOOTH_DEVICES = 'GET_BLUETOOTH_DEVICES';
-export const POST_BLUETOOTH_DEVICES = 'POST_BLUETOOTH_DEVICES';
+export const POST_EVENT = 'POST_BLUETOOTH_DEVICES';

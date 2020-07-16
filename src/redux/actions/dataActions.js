@@ -1,12 +1,13 @@
 import {
   GET_BLUETOOTH_DEVICES,
-  POST_BLUETOOTH_DEVICES,
+  POST_EVENT,
   LOADING_DATA,
   LOADING_UI,
   SET_ERRORS,
   CLEAR_ERRORS,
 } from "../types";
 import axios from "axios";
+import { getUserData } from "./userActions";
 var connected = false;
 var selected_device;
 var connected_server;
@@ -54,4 +55,25 @@ export const clearErrors = () => (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,
   });
+};
+
+export const postEvents = (postData, history) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/event", postData)
+    .then((res) => {
+      dispatch({
+        type: POST_EVENT,
+        payload: postData,
+      });
+      dispatch(clearErrors());
+      //dispatch(getUserData());
+      //history.push('/event')
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data,
+      });
+    });
 };

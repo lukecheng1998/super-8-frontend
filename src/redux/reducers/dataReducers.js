@@ -1,4 +1,4 @@
-import {GET_BLUETOOTH_DEVICES, POST_BLUETOOTH_DEVICES, LOADING_DATA} from "../types"
+import {GET_BLUETOOTH_DEVICES, POST_EVENT, LOADING_DATA} from "../types"
 const initialState = {
     devices: [],
     loading: false
@@ -14,6 +14,10 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 //more might be needed later
+            }
+        case POST_EVENT:
+            return {
+                ...state,
             }
         default:
             return state
