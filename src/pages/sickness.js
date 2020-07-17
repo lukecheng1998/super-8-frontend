@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
+import Link from "react-router-dom/Link";
 const styles = (theme) => ({
   ...theme.spreadThis,
   updateMessage: {
@@ -24,6 +25,7 @@ export class sickness extends Component {
       errors: {},
       message: "",
       hasClicked: false,
+      symptoms: "",
     };
   }
   handleSubmit = (event) => {
@@ -33,6 +35,7 @@ export class sickness extends Component {
     const userData = {
       isSick: true,
       sicknessTime: new Date().toISOString(),
+      symptoms: this.state.symptoms,
     };
     this.state.hasClicked = true;
     console.log(userData);
@@ -74,7 +77,7 @@ export class sickness extends Component {
       UI: { loading },
       user: {
         authenticated,
-        credentials: { handle, createdAt, isSick },
+        credentials: { handle, createdAt, isSick, symptoms },
       },
     } = this.props;
     const { errors, message, hasClicked } = this.state;
@@ -83,19 +86,20 @@ export class sickness extends Component {
         <Typography variant="h2" className={classes.pageTitle}>
           Are you sick?
         </Typography>
-        <TextField
-          name="body"
-          type="text"
-          label="Symptoms"
-          rows="3"
-          placeholder="Write your symptoms here otherwise click cancel if you aren't sick"
-          error={errors.body ? true : false}
-          helperText={errors.body}
-          className={classes.textField}
-          onChange={this.handleChange}
-          fullWidth
-        />
         <form onSubmit={this.handleSubmit}>
+          <TextField
+            name="body"
+            type="text"
+            label="Symptoms"
+            rows="3"
+            placeholder="Write your symptoms"
+            error={errors.body ? true : false}
+            helperText={errors.body}
+            className={classes.textField}
+            onChange={this.handleChange}
+            fullWidth
+          />
+
           <div align="center">
             <Box width="25%" height="5%">
               <Button
@@ -124,11 +128,26 @@ export class sickness extends Component {
                 disabled={loading}
                 fullWidth
               >
-                Cancel
+                I am not sick
               </Button>
             </Box>
           </div>
         </form>
+        <div align="center">
+          <Box width="25%" height="5%">
+            <Button
+              id="Cancel"
+              type="Cancel"
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/home"
+              fullWidth
+            >
+              Cancel
+            </Button>
+          </Box>
+        </div>
         {hasClicked && !loading ? (
           <Typography variant="body1" className={classes.updateMessage}>
             Successfully updated your sickness status

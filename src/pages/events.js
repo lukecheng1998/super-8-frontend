@@ -7,6 +7,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { postEvents } from "../redux/actions/dataActions";
 import "date-fns";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Link from "react-router-dom/Link";
 
 
 const styles = (theme) => ({
@@ -90,7 +91,7 @@ export class events extends Component {
                       id="date"
                       name="date"
                       type="date"
-                      label="Date First Attended"
+                      label=""
                       error={errors.date ? true : false}
                       helperText={errors.date}
                       className={classes.textField}
@@ -135,6 +136,21 @@ export class events extends Component {
                     </Box>
                   </div>
                 </form>
+                <div align="center">
+                    <Box width="25%" height="5%">
+                      <Button
+                        id="Cancel"
+                        type="Cancel"
+                        variant="contained"
+                        className={classes.buttons}
+                        component={Link}
+                        to="/home"
+                        fullWidth
+                      >
+                        Cancel
+                      </Button>
+                    </Box>
+                  </div>
               </Grid>
               <Grid item sm />
             </Grid>

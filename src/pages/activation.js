@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import { Button, Dialog, Box } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "@material-ui/core/Link";
+import Link from "react-router-dom/Link";
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
@@ -19,7 +19,7 @@ export class activation extends Component {
       open: false,
       errors: {},
       connected: false,
-      hasClicked: false
+      hasClicked: false,
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -97,11 +97,25 @@ export class activation extends Component {
             </Box>
           </div>
         </form>
+        <div align="center">
+          <Box width="25%" height="5%">
+            <Button
+              type="submit"
+              variant="contained"
+              className={classes.buttons}
+              component={Link}
+              to="/home"
+              fullWidth
+            >
+              Cancel
+            </Button>
+          </Box>
+        </div>
         {this.state.hasClicked ? (
           <Typography variant="body1" className={classes.pageTitle}>
-            Sucessfully activated device 
+            Sucessfully activated device
           </Typography>
-        ):(
+        ) : (
           <div />
         )}
         <Dialog
