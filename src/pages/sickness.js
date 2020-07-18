@@ -81,7 +81,7 @@ export class sickness extends Component {
         credentials: { handle, createdAt, isSick },
       },
     } = this.props;
-    const { errors, message, hasClicked } = this.state;
+    const { errors, hasClicked } = this.state;
     const checkedSick = authenticated ? (
       <div>
         <Typography variant="h2" className={classes.pageTitle}>
