@@ -31,7 +31,8 @@ export default function (state = initialState, action){
                 ...state,
                 //isSick: [action.payload, ...state.isSick],
                 loading: false,
-                message: action.payload
+                message: action.payload,
+                ...action.payload
             }
         default:
             return state;

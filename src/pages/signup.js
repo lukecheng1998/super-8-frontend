@@ -68,7 +68,7 @@ export class signup extends Component {
                 name="email"
                 type="email"
                 label="email"
-                className={classes.TextField}
+                className={classes.textField}
                 helperText={errors.email}
                 error={errors.email ? true : false}
                 value={this.state.email}
@@ -83,7 +83,7 @@ export class signup extends Component {
                 name="password"
                 type="password"
                 label="password"
-                className={classes.TextField}
+                className={classes.textField}
                 helperText={errors.password}
                 error={errors.password ? true : false}
                 value={this.state.password}
@@ -98,7 +98,7 @@ export class signup extends Component {
                 name="confirmPassword"
                 type="password"
                 label="confirm password"
-                className={classes.TextField}
+                className={classes.textField}
                 helperText={errors.confirmPassword}
                 error={errors.confirmPassword ? true : false}
                 value={this.state.confirmPassword}
@@ -113,7 +113,7 @@ export class signup extends Component {
                 name="handle"
                 type="text"
                 label="name"
-                className={classes.TextField}
+                className={classes.textField}
                 helperText={classes.handle}
                 error={errors.handle ? true : false}
                 value={this.state.handle}

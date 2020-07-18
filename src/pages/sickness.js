@@ -48,6 +48,7 @@ export class sickness extends Component {
     const userData = {
       isSick: false,
       sicknessTime: "",
+      symptoms: this.state.symptoms
     };
     console.log(userData);
     this.state.hasClicked = true;
@@ -77,7 +78,7 @@ export class sickness extends Component {
       UI: { loading },
       user: {
         authenticated,
-        credentials: { handle, createdAt, isSick, symptoms },
+        credentials: { handle, createdAt, isSick },
       },
     } = this.props;
     const { errors, message, hasClicked } = this.state;
@@ -88,14 +89,16 @@ export class sickness extends Component {
         </Typography>
         <form onSubmit={this.handleSubmit}>
           <TextField
-            name="body"
-            type="text"
+            id="symptoms"
+            name="symptoms"
+            type="symptoms"
             label="Symptoms"
             rows="3"
             placeholder="Write your symptoms"
-            error={errors.body ? true : false}
-            helperText={errors.body}
+            error={errors.symptoms ? true : false}
+            helperText={errors.symptoms}
             className={classes.textField}
+            value={this.state.symptoms}
             onChange={this.handleChange}
             fullWidth
           />

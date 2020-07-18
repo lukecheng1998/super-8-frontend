@@ -47,7 +47,12 @@ export const changeSicknessStatus = (userData, history) => (dispatch) => {
         payload: res.data.payload
       })
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      })
+    });
 };
 export const loginUser = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
