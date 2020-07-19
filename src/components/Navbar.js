@@ -48,14 +48,7 @@ export class Navbar extends Component {
               >
                 Home
               </Button>
-              <Button
-                color="inherit"
-                className={classes.navbarDesign}
-                component={Link}
-                to="/other"
-              >
-                Other
-              </Button>
+            
 
               <Button
                 color="inherit"
