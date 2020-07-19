@@ -56,6 +56,34 @@ export class Navbar extends Component {
               >
                 Other
               </Button>
+
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/privacy"
+              >
+                Privacy
+              </Button>
+
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/about"
+              >
+                About
+              </Button>
+
+              <Button
+                color="inherit"
+                className={classes.navbarDesign}
+                component={Link}
+                to="/acknowledgments"
+              >
+                Acknowledgments
+              </Button>
+
               <div align="center">
                 <img src="logo-2.png" alt="logo" height="50" width="50" display="block" margin-left="auto" margin-right="auto"/>
               </div>
