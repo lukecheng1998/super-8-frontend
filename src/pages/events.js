@@ -28,11 +28,22 @@ export class events extends Component {
     event.preventDefault();
     var d = new Date(this.state.date);
     console.log(d);
-    const postEvent = {
-      event: this.state.event,
-      date: d.toISOString(),
-      venue: this.state.venue,
-    };
+    let postEvent = {}
+    if(d === 'Invalid Date'){
+      d = "";
+       postEvent = {
+        event: this.state.event,
+        date: d,
+        venue: this.state.venue,
+      };
+    }else{
+       postEvent = {
+        event: this.state.event,
+        date: d.toISOString(),
+        venue: this.state.venue,
+      };
+    }
+    
     this.props.postEvents(postEvent, this.props.history);
     this.state.hasClick = true;
   };

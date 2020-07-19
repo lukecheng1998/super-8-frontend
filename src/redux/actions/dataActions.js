@@ -64,11 +64,10 @@ export const postEvents = (postData, history) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: POST_EVENT,
-        payload: postData,
       });
       dispatch(clearErrors());
-      //dispatch(getUserData());
-      //history.push('/event')
+      dispatch(getUserData());
+      history.push('/event')
     })
     .catch((err) => {
       dispatch({
