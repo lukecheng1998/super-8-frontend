@@ -37,7 +37,12 @@ export class sickness extends Component {
       sicknessTime: new Date().toISOString(),
       symptoms: this.state.symptoms,
     };
-    this.state.hasClicked = true;
+    if(userData.symptoms !== ""){
+      this.state.hasClicked = true;
+    }else{
+      this.state.hasClicked = false;
+    }
+     
     console.log(userData);
     this.props.changeSicknessStatus(userData, this.props.history);
   };

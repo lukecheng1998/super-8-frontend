@@ -41,12 +41,6 @@ export const changeSicknessStatus = (userData, history) => (dispatch) => {
       history.push("/sickness")
      
     })
-    .then((res) => {
-      dispatch({
-        type: SET_SICKNESS,
-        payload: res.data.payload
-      })
-    })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
