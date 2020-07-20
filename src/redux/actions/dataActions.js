@@ -67,7 +67,7 @@ export const postEvents = (postData, history) => (dispatch) => {
       });
       dispatch(clearErrors());
       dispatch(getUserData());
-      history.push('/event')
+      //history.push('/event')
     })
     .catch((err) => {
       dispatch({

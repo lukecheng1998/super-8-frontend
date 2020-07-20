@@ -22,31 +22,50 @@ export class events extends Component {
       event: "",
       date: "",
       venue: "",
+      thereAreErrors: false,
     };
   }
   handleSubmit = (event) => {
     event.preventDefault();
     var d = new Date(this.state.date);
     console.log(d);
+    console.log(this.state.event);
+    console.log(this.state.venue);
+
     let postEvent = {}
-    if(d === 'Invalid Date'){
+    if(isNaN(d)){
       d = "";
        postEvent = {
         event: this.state.event,
         date: d,
         venue: this.state.venue,
       };
+      this.state.thereAreErrors = true
     }else{
        postEvent = {
         event: this.state.event,
         date: d.toISOString(),
         venue: this.state.venue,
       };
+      this.state.thereAreErrors = false
     }
     
     this.props.postEvents(postEvent, this.props.history);
     this.state.hasClick = true;
   };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+      this.setState({
+        event: "",
+        errors: {},
+        date: "",
+        venue: ""
+      });
+    }
+  }
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -165,7 +184,7 @@ export class events extends Component {
               </Grid>
               <Grid item sm />
             </Grid>
-            {hasClick && !loading ? (
+            {hasClick && !loading && !errors  ? (
               <Typography variant="body1" className={classes.pageTitle}>
                 Successfully add your event, feel free to add more or click home to navigate home
               </Typography>
