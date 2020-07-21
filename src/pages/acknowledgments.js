@@ -23,7 +23,7 @@ export class acknowledgments extends Component {
           className={classes.pageTitle}
           align="center"
         >
-          Super 8 would like to express our gratitude to Techpoint and their
+          Super 8 would like to express our gratitude to TechPoint and their
           staff for hosting the SOS Challenge and for giving our team the
           opportunity to network together, learn about the Indianapolis
           technology scene, and create a technology solution we are proud of.
