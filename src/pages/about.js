@@ -73,7 +73,7 @@ export class About extends Component {
           apprehension, therefore returning safety to Indianapolis events.
         </Typography>
         <Typography variant="h3" className={classes.pageTitle}>
-          Why bluetooth?
+          Why Bluetooth?
         </Typography>
         <Typography variant="body1" className={classes.pageTitle}>
           Our application and website rely on Bluetooth technology, which the

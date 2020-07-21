@@ -30,10 +30,10 @@ export class home extends Component {
       //UI: { loading },
     } = this.props;
     const { errors } = this.state;
-    return authenticated ? (
+    return authenticated && !loading ? (
       <div>
         <Typography variant="h2" className={classes.pageTitle}>
-          Hi {handle}! Welcome to the dashboard Let's take a look at your
+          Hi {handle}! Welcome to the dashboard. Let's take a look at your
           status.
         </Typography>
         <div align="center">
@@ -79,7 +79,7 @@ export class home extends Component {
         </div>
       </div>
     ) : (
-      <p className={classes.pageTitle}>Please sign in to view this page!</p>
+      <StaticHome />
     );
   }
 }
