@@ -116,7 +116,9 @@ export class activation extends Component {
             Sucessfully activated device
           </Typography>
         ) : (
-          <div />
+          <Typography variant="body1" className={classes.pageTitle}>
+            Please make sure you have a bluetooth enabled device
+          </Typography>
         )}
         <Dialog
           open={this.state.open}
