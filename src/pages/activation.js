@@ -111,7 +111,7 @@ export class activation extends Component {
             </Button>
           </Box>
         </div>
-        {this.state.hasClicked ? (
+        {this.state.hasClicked && this.state.connected ? (
           <Typography variant="body1" className={classes.pageTitle}>
             Sucessfully activated device
           </Typography>

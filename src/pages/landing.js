@@ -79,7 +79,7 @@ export class landing extends Component {
               to="/acknowledgments"
               fullWidth
             >
-              Acknowledgements
+              Acknowledgments
             </Button>
           </Box>
         </div>

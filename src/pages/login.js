@@ -62,7 +62,7 @@ class login extends Component {
         <Grid item sm />
         <Grid item sm>
           <Typography variant="h2" className={classes.pageTitle}>
-            LogIn
+            Login
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <Box bgcolor="primary" color="primary.contrastText" border={5}>
