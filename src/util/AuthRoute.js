@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 //Import 
 const AuthRoute = ({component: Component, authenticated, ...rest }) => (
     <Route {...rest}
-    render={(props) => authenticated === true ? <Redirect to="/" /> : <Component {...props} /> } />
+    render={(props) => authenticated === true ? <Redirect to="/home" /> : <Component {...props} /> } />
 )
 const mapStateToProps = (state) => ({
     authenticated: state.user.authenticated
